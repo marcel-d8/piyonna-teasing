@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piyonna - Launching Soon</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'piyonna-red': '#ff4939',
+            'piyonna-red-light': '#ff6658',
+            'piyonna-purple': '#e7b0ff',
+            'piyonna-purple-dark': '#df93ff',
+            'piyonna-button': '#bf57ed',
+          },
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+            'sf-pro': ['"SF Pro Display"', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="font-inter">
+
+  <!-- Main Container -->
+  <section class="bg-piyonna-red flex flex-col items-center gap-3 px-6 pt-16 pb-14">
+    <!-- Logo -->
+    <img src="assets/logo.svg" alt="Piyonna" class="h-[86px] w-auto">
+
+    <!-- Launching Soon -->
+    <h1 class="text-white text-[30px] font-bold leading-[34px] tracking-[-0.6px] text-center">
+      LAUNCHING SOON
+    </h1>
+
+    <!-- Video/GIF Area -->
+    <div class="w-[210px] h-[210px] rounded-full overflow-hidden bg-white/10">
+      <img src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" alt="Animation" class="w-full h-full object-cover">
+    </div>
+
+    <!-- Description -->
+    <p class="text-white text-[16px] font-semibold leading-[1.4] tracking-[-0.32px] text-center">
+      The new way to experience authentic<br>
+      K-Beauty starts here.<br>
+      K-Beauty proven in global markets<br>
+      — explored through verified<br>
+      reviews and price comparison.
+    </p>
+  </section>
+
+  <!-- Countdown Container -->
+  <section class="bg-piyonna-red-light relative flex flex-col items-center gap-4 px-6 pt-12 pb-16 text-white text-center">
+    <!-- Plus Icon (at bottom, overlapping next section) -->
+    <img src="assets/plus-icon.svg" alt="" class="absolute -bottom-[21px] left-1/2 -translate-x-1/2 w-[42px] h-[42px] z-10">
+    <!-- Title -->
+    <div class="flex flex-col items-center gap-2">
+      <p class="text-[20px] font-semibold leading-[1.2] tracking-[-0.4px] opacity-80">
+        PIYONNA
+      </p>
+      <h2 class="text-[32px] font-bold leading-[1.2] tracking-[-0.64px] font-sf-pro">
+        Open Countdown
+      </h2>
+    </div>
+
+    <!-- Timer -->
+    <div class="flex items-start gap-2 font-semibold">
+      <!-- Days -->
+      <div class="flex flex-col items-center">
+        <span id="days" class="text-[40px] leading-[52px] tracking-[-0.8px]">00</span>
+        <span class="text-[15px] leading-[20px] tracking-[-0.3px] opacity-40">DAY</span>
+      </div>
+      <span class="text-[40px] leading-[52px] tracking-[-0.8px]">:</span>
+      <!-- Hours -->
+      <div class="flex flex-col items-center">
+        <span id="hours" class="text-[40px] leading-[52px] tracking-[-0.8px]">00</span>
+        <span class="text-[15px] leading-[20px] tracking-[-0.3px] opacity-40">HRS</span>
+      </div>
+      <span class="text-[40px] leading-[52px] tracking-[-0.8px]">:</span>
+      <!-- Minutes -->
+      <div class="flex flex-col items-center">
+        <span id="minutes" class="text-[40px] leading-[52px] tracking-[-0.8px]">00</span>
+        <span class="text-[15px] leading-[20px] tracking-[-0.3px] opacity-40">MIN</span>
+      </div>
+      <span class="text-[40px] leading-[52px] tracking-[-0.8px]">:</span>
+      <!-- Seconds -->
+      <div class="flex flex-col items-center">
+        <span id="seconds" class="text-[40px] leading-[52px] tracking-[-0.8px]">00</span>
+        <span class="text-[15px] leading-[20px] tracking-[-0.3px] opacity-40">SEC</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Discount Code Container -->
+  <section class="bg-piyonna-purple relative flex flex-col items-center gap-8 px-6 pt-12 pb-[120px] overflow-hidden">
+    <!-- Background Symbols -->
+    <img src="assets/symbol-1.svg" alt="" class="absolute top-[62px] left-1/2 -translate-x-[158px] w-[179px] h-[179px] mix-blend-soft-light pointer-events-none">
+    <img src="assets/symbol-2.svg" alt="" class="absolute top-[213px] left-1/2 translate-x-[50px] w-[179px] h-[179px] mix-blend-soft-light pointer-events-none">
+
+
+    <!-- Coupon Container -->
+    <div class="flex flex-col items-center gap-6 w-full relative z-10">
+      <!-- Header -->
+      <div class="flex flex-col items-center gap-1 text-white text-center">
+        <p class="text-[20px] font-semibold leading-[1.2] tracking-[-0.4px] opacity-80">
+          For Early Subscribers
+        </p>
+        <h2 class="text-[32px] font-bold leading-[1.2] tracking-[-0.64px] font-sf-pro">
+          Discount Code
+        </h2>
+      </div>
+
+      <!-- Coupon Card -->
+      <div class="relative w-[190px] h-[118px] flex flex-col items-center justify-center">
+        <img src="assets/coupon-bg.svg" alt="" class="absolute inset-0 w-full h-full">
+        <p class="relative text-piyonna-purple text-[15px] font-medium leading-[17px] tracking-[-0.45px] text-center">
+          Your First Order
+        </p>
+        <div class="relative flex items-end gap-[3px] text-piyonna-purple-dark font-bold text-center">
+          <span class="text-[32px] leading-[55px] tracking-[-0.64px] font-sf-pro">-</span>
+          <span class="text-[46px] leading-[55px] tracking-[-0.92px] font-sf-pro">50</span>
+          <span class="text-[46px] leading-[55px] tracking-[-0.92px] font-sf-pro font-black">%</span>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <p class="text-white text-[16px] font-semibold leading-[1.4] tracking-[-0.32px] text-center">
+        To celebrate our launch, we're sending<br>
+        something special to our subscribers.<br>
+        Be the first to receive PIYONNA's welcome<br>
+        — plus an exclusive 50% discount via email.
+      </p>
+    </div>
+
+    <!-- Email Form -->
+    <form id="email-form" class="flex flex-col items-center gap-3 w-full max-w-[327px] relative z-10">
+      <!-- Email Input -->
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Enter your email address"
+        required
+        class="w-full px-5 py-[14px] bg-white/10 border border-white rounded-full text-white text-[15px] font-medium leading-[1.4] tracking-[-0.3px] placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+      >
+
+      <!-- Checkbox -->
+      <label class="flex items-start gap-2 w-full cursor-pointer">
+        <input
+          type="checkbox"
+          id="agree"
+          name="agree"
+          required
+          class="w-5 h-5 mt-[2px] appearance-none bg-white/20 border border-white rounded-full checked:bg-piyonna-button checked:border-piyonna-button cursor-pointer flex-shrink-0"
+        >
+        <span class="text-white text-[13px] font-medium leading-[1.5] tracking-[-0.26px]">
+          I agree to receive PIYONNA's launch updates and exclusive offers.
+        </span>
+      </label>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="w-full flex items-center justify-center gap-2 px-6 py-[14px] bg-piyonna-button rounded-full text-white text-[16px] font-semibold leading-[1.4] tracking-[-0.32px] hover:bg-piyonna-button/90 transition-colors whitespace-nowrap"
+      >
+        <span>Get the discount code</span>
+        <img src="assets/arrow-right.svg" alt="" class="w-5 h-5">
+      </button>
+
+      <!-- Privacy Notice -->
+      <p class="text-white/80 text-[10px] font-normal leading-[1.2] tracking-[-0.2px] text-center">
+        Your email address will only be used to send your discount code and service updates. You can unsubscribe at any time.
+      </p>
+
+      <!-- Privacy Policy Link -->
+      <a href="#" class="text-white text-[10px] font-medium leading-[1.2] tracking-[-0.2px] underline hover:text-white/80">
+        Privacy Policy
+      </a>
+    </form>
+  </section>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>
