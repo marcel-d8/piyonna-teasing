@@ -75,19 +75,20 @@ form.addEventListener('submit', async function(e) {
   submitButton.innerHTML = '<span>Submitting...</span>';
 
   try {
-    const success = await subscribeToKlaviyo(email);
+    // const success = await subscribeToKlaviyo(email);
+    const success = true
 
     if (success) {
-      alert('Thank you for subscribing! Check your email for the discount code.');
-      form.reset();
-      updateButtonState();
+      showPopup('Verify your email for', '30% OFF on launch day');
+      // form.reset();
+      // updateButtonState();
     } else {
-      alert('Something went wrong. Please try again.');
+      showPopup('Oops!', 'Something went wrong. Please try again.');
     }
 
   } catch (error) {
     console.error('Klaviyo API Error:', error);
-    alert('Something went wrong. Please try again.');
+    showPopup('Oops!', 'Something went wrong. Please try again.');
   } finally {
     submitButton.innerHTML = originalText;
     updateButtonState();
@@ -147,6 +148,31 @@ async function subscribeToKlaviyo(email) {
 
   return response.ok;
 }
+
+// ============================================
+// POPUP MODAL
+// ============================================
+
+function showPopup(title, subtitle) {
+  const overlay = document.getElementById('popup-overlay');
+  const content = document.getElementById('popup-content');
+  overlay.classList.remove('opacity-0', 'pointer-events-none');
+  content.classList.remove('scale-95');
+  content.classList.add('scale-100');
+}
+
+function hidePopup() {
+  const overlay = document.getElementById('popup-overlay');
+  const content = document.getElementById('popup-content');
+  overlay.classList.add('opacity-0', 'pointer-events-none');
+  content.classList.remove('scale-100');
+  content.classList.add('scale-95');
+}
+
+document.getElementById('popup-close').addEventListener('click', hidePopup);
+document.getElementById('popup-overlay').addEventListener('click', function(e) {
+  if (e.target === this) hidePopup();
+});
 
 // ============================================
 // CHECKBOX VISUAL FEEDBACK
