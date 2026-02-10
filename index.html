@@ -46,8 +46,14 @@
   <!-- Figma: top strip 101px + content area 1156px = 1257px total -->
   <div class="relative w-full overflow-hidden" style="height: 1257px;">
 
-    <!-- Layer 1: Hero Photo (0–599px visible) -->
-    <img src="assets/hero-photo.png" alt="" class="absolute top-0 left-0 w-full" style="height: 599px; object-fit: cover; object-position: center top;">
+    <!-- Layer 1: Hero Photo (0–599px visible) — progressive loading: sm first, then lg -->
+    <img
+      id="hero-banner"
+      src="assets/piyonna_banner_mobile_sm.png"
+      alt=""
+      class="absolute top-0 left-0 w-full transition-opacity duration-500"
+      style="height: 599px; object-fit: cover; object-position: center top;"
+    >
 
     <!-- Layer 2: Coral Gradient over hero (101–612px, 511px tall) -->
     <div class="absolute left-0 w-full" style="top: 101px; height: 511px; background: linear-gradient(to bottom, transparent 45.67%, #ff5d42);"></div>
@@ -227,6 +233,18 @@
       </a>
     </form>
   </section>
+
+  <!-- Progressive Hero Image Loading -->
+  <script>
+    (function() {
+      var hero = document.getElementById('hero-banner');
+      var lg = new Image();
+      lg.onload = function() {
+        hero.src = lg.src;
+      };
+      lg.src = 'assets/piyonna_banner_mobile_lg.png';
+    })();
+  </script>
 
   <!-- JavaScript -->
   <script src="js/main.js"></script>
