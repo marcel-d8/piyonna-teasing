@@ -41,60 +41,15 @@
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body class="font-inter bg-white overflow-x-hidden">
+  <picture class="section-1">
+    <source media="(min-width: 640px)" srcset="assets/desktop_1_sm.jpg">
+    <img src="assets/mobile_1_sm.jpg" alt="" class="w-full">
+  </picture>
+  <picture>
+    <source media="(min-width: 640px)" srcset="assets/desktop_2_sm.jpg">
+    <img src="assets/mobile_2_sm.jpg" alt="" class="w-full">
+  </picture>
 
-  <!-- ===== HERO SECTION ===== -->
-  <header class="relative overflow-hidden">
-    <!-- Hero Photo (block flow — determines section height naturally) -->
-    <img
-      id="hero-banner"
-      src="assets/piyonna_banner_mobile_sm.jpg"
-      alt=""
-      class="block w-full"
-    >
-
-    <!-- Purple vignette overlay (absolute) -->
-    <div class="absolute inset-0 pointer-events-none" style="background:
-      linear-gradient(to bottom, #e7b0ff 0%, transparent 12%),
-      linear-gradient(to right, #e7b0ff 0%, transparent 12%),
-      linear-gradient(to left, #e7b0ff 0%, transparent 12%);
-    "></div>
-
-    <!-- Coral gradient overlay — bottom portion of hero (absolute) -->
-    <div class="absolute bottom-0 left-0 w-full" style="height: 65%; background: linear-gradient(to bottom, transparent 30%, #ff5d42);"></div>
-
-    <!-- Nav: Piyonna Symbol (absolute) -->
-    <div class="absolute top-[29px] left-4 z-10">
-      <img src="assets/piyonna-symbol-top.svg" alt="Piyonna" class="w-12 h-[50px]">
-    </div>
-
-    <!-- Nav: KR Badge (absolute) -->
-    <div class="absolute top-[29px] right-6 z-10">
-      <img src="assets/hamburger-menu.svg" alt="KR" class="w-6 h-6">
-    </div>
-
-    <!-- Decorative Symbol: Left (absolute) -->
-    <img src="assets/piyonna-symbol.svg" alt="" class="absolute w-[48px] h-[50px]" style="top: 76%; left: 4.27%;">
-
-    <!-- Decorative Symbol: Right (absolute) -->
-    <img src="assets/piyonna-symbol.svg" alt="" class="absolute w-[48px] h-[50px]" style="top: 91%; left: 79.47%;">
-  </header>
-
-  <!-- ===== BRAND + GET READY (block flow, coral gradient background) ===== -->
-  <section class="flex flex-col items-center text-center" style="background: linear-gradient(to bottom, #ff5d42 0%, transparent 85%);">
-
-    <div style="position: relative; top: -126px; padding-left: clamp(26px, 8vw, 44px); padding-right: clamp(26px, 8vw, 44px);">
-      <img src="assets/piyonna-section-1.svg" style="width: 100%; height: auto;" />
-    </div>
-
-    <!-- Get Ready -->
-    <div class="flex flex-col w-full items-center gap-6 px-7 mt-24" style="position: relative; top: -106px;  padding-left: clamp(26px, 8vw, 44px); padding-right: clamp(26px, 8vw, 44px);">
-      <img src="assets/piyonna-section-2.svg" style="width: 100%; height: auto;" /><!-- Launching Soon -->
-      <p class="text-coral-700 italic tracking-[-0.4px] pt-2 pb-8" style="font-size: clamp(18px, 5.33vw, 32px); line-height: 2.1;">
-        Launching Soon
-      </p>
-    </div>
-
-  </section>
 
   <!-- ===== COUNTDOWN ===== -->
   <section class="relative flex flex-col items-center gap-4 px-6 pt-12 pb-16 text-countdown-text text-center overflow-hidden" style="background: linear-gradient(to bottom, transparent, #f7e5ff)">
@@ -216,15 +171,22 @@
     </form>
   </section>
 
-  <!-- Progressive Hero Image Loading -->
+  <!-- Progressive Image Loading: sm → lg -->
   <script>
     (function() {
-      var hero = document.getElementById('hero-banner');
-      var lg = new Image();
-      lg.onload = function() {
-        hero.src = lg.src;
-      };
-      lg.src = 'assets/piyonna_banner_mobile_lg.jpg';
+      document.querySelectorAll('.section-1 img').forEach(function(img) {
+        var currentSrc = img.currentSrc || img.src;
+        var lgSrc = currentSrc.replace('_sm.', '_lg.');
+        var lg = new Image();
+        lg.onload = function() {
+          var source = img.parentElement.querySelector('source');
+          if (source && source.srcset && currentSrc === source.srcset) {
+            source.srcset = lgSrc;
+          }
+          img.src = lgSrc;
+        };
+        lg.src = lgSrc;
+      });
     })();
   </script>
 
