@@ -75,8 +75,7 @@ form.addEventListener('submit', async function(e) {
   submitButton.innerHTML = '<span>Submitting...</span>';
 
   try {
-    // const success = await subscribeToKlaviyo(email);
-    const success = true
+    const success = await subscribeToKlaviyo(email);
 
     if (success) {
       showPopup('Verify your email for', '30% OFF on launch day');
