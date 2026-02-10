@@ -214,18 +214,19 @@
   <!-- Progressive Image Loading: sm → lg -->
   <script>
     (function() {
-      document.querySelectorAll('.section-1 img').forEach(function(img) {
-        var currentSrc = img.currentSrc || img.src;
-        var lgSrc = currentSrc.replace('_sm.', '_lg.');
-        var lg = new Image();
-        lg.onload = function() {
-          var source = img.parentElement.querySelector('source');
-          if (source && source.srcset && currentSrc === source.srcset) {
-            source.srcset = lgSrc;
-          }
-          img.src = lgSrc;
-        };
-        lg.src = lgSrc;
+      document.querySelectorAll('.section-1').forEach(function(picture) {
+        var img = picture.querySelector('img');
+        var source = picture.querySelector('source');
+        // Upgrade mobile img src (sm → lg)
+        var mobileLg = new Image();
+        mobileLg.onload = function() { img.src = mobileLg.src; };
+        mobileLg.src = img.getAttribute('src').replace('_sm.', '_lg.');
+        // Upgrade desktop source srcset (sm → lg)
+        if (source) {
+          var desktopLg = new Image();
+          desktopLg.onload = function() { source.srcset = desktopLg.src; };
+          desktopLg.src = source.getAttribute('srcset').replace('_sm.', '_lg.');
+        }
       });
     })();
   </script>
